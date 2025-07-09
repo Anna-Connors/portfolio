@@ -1,5 +1,6 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import NavBar from "./navBar"
 
 import Header from "./header"
 import "./layout.css"
@@ -18,6 +19,7 @@ const Layout = ({ children, fullWidth  = false}) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <NavBar />
       <div
         style={{
           margin: fullWidth ? '0' : `0 auto`,
