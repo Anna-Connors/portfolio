@@ -4,7 +4,7 @@ import * as styles from "./navBar.module.css"
 
 const NavBar = () => {
     return (
-        <nav className={styles.navBar}>
+        <nav className={styles.navbar}>
             <ul className={styles.navList}>
                 <li><Link to="/" className={styles.navLink}>Home</Link></li>
                 <li><Link to="/about" className={styles.navLink}>About</Link></li>
