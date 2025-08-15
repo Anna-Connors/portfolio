@@ -1,13 +1,29 @@
-
+const path = require('path')
 /**
  * @type {import('gatsby').GatsbyNode['createPages']}
  */
-exports.createPages = async ({ actions }) => {
+
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  createPage({
-    path: "/using-dsg",
-    component: require.resolve("./src/templates/using-dsg.js"),
-    context: {},
-    defer: true,
+
+  const result = await graphql(`
+    {
+      allContentfulProject {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
+
+  result.data.allContentfulProject.nodes.forEach(project => {
+    createPage({
+      path: `/projects/${project.slug}`,
+      component: path.resolve("./src/templates/project.js"),
+      context: {
+        slug: project.slug,
+      },
+    })
   })
+
 }
