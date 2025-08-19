@@ -1,9 +1,10 @@
 import React from "react"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Seo from "../components/seo"
 import { graphql } from "gatsby"
 import * as styles from "../components/about.module.css"
+import AccordionSection from "../components/Accordion"
 
 const AboutPage = ({ data }) => {
   const aboutData = data.contentfulAboutMe
@@ -13,22 +14,18 @@ const AboutPage = ({ data }) => {
       <div className={styles.aboutContainer}>
         <h1 className={styles.pageTitle}>About Me</h1>
 
-        <section className={styles.aboutSection}>
-          <h2>Education</h2>
+        <AccordionSection title="Education">
             {documentToReactComponents(JSON.parse(aboutData.education.raw))}
-        </section>
-        <section className={styles.aboutSection}>
-          <h2>Experience</h2>
+        </AccordionSection>
+        <AccordionSection title="Experience">
             {documentToReactComponents(JSON.parse(aboutData.experience.raw))}
-        </section>
-        <section className={styles.aboutSection}>
-          <h2>Goals</h2>
+        </AccordionSection>
+        <AccordionSection title="Goals">
             {documentToReactComponents(JSON.parse(aboutData.goals.raw))}
-        </section>
-        <section className={styles.aboutSection}>
-          <h2>Personal Info</h2>
+        </AccordionSection>
+        <AccordionSection title="Personal Info">
             {documentToReactComponents(JSON.parse(aboutData.personalInfo.raw))}
-        </section>
+        </AccordionSection>
       </div>
     </Layout>
   )

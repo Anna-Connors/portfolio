@@ -1,10 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
-import Layout from "../components/layout"
+import Layout from "../components/Layout"
 import Seo from "../components/seo"
 import * as styles from "../components/project.module.css"
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
+import AccordionSection from "../components/Accordion"
 
 const ProjectTemplate = ({ data }) => {
     const project = data.contentfulProject
@@ -28,37 +29,30 @@ const ProjectTemplate = ({ data }) => {
                 </div>
 
                 <div className={styles.projectInfo}>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Description</h2>
-                            {documentToReactComponents(JSON.parse(project.longDescription.raw))}
-                    </section>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Issues Addressed</h2>
-                            {documentToReactComponents(JSON.parse(project.issueAddressed.raw))}
-                    </section>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Tech Stack</h2>
+                    <AccordionSection title="Description">
+                        {documentToReactComponents(JSON.parse(project.longDescription.raw))}
+                    </AccordionSection>
+                    <AccordionSection title="Issues Addressed">
+                        {documentToReactComponents(JSON.parse(project.issueAddressed.raw))}
+                    </AccordionSection>
+                    <AccordionSection title="Tech Stack">
                         <p>{project.techStack}</p>
-                    </section>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Design Decisions</h2>
-                            {documentToReactComponents(JSON.parse(project.designDecisions.raw))}
-                    </section>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Process</h2>
-                            {documentToReactComponents(JSON.parse(project.process.raw))}
-                    </section>
-                    <section className={styles.projectInfoSection}>
+                    </AccordionSection>
+                    <AccordionSection title="Design Decisions">
+                        {documentToReactComponents(JSON.parse(project.designDecisions.raw))}
+                    </AccordionSection>
+                    <AccordionSection title="Process">
+                        {documentToReactComponents(JSON.parse(project.process.raw))}
+                    </AccordionSection>
+                    <AccordionSection title="Repository">
                         <a href={project.repository}>View Repository</a>
-                    </section>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Technical Implementation</h2>
-                            {documentToReactComponents(JSON.parse(project.technicalImplementation.raw))}
-                    </section>
-                    <section className={styles.projectInfoSection}>
-                        <h2>Challenges & Solutions</h2>
-                            {documentToReactComponents(JSON.parse(project.challengesSolutions.raw))}
-                    </section>
+                    </AccordionSection>
+                    <AccordionSection title="Technical Implementation">
+                        {documentToReactComponents(JSON.parse(project.technicalImplementation.raw))}
+                    </AccordionSection>
+                    <AccordionSection title="Challenges & Solutions">
+                        {documentToReactComponents(JSON.parse(project.challengesSolutions.raw))}
+                    </AccordionSection>
                 </div>
             </div>
         </Layout> 

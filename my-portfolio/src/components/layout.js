@@ -2,7 +2,7 @@ import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import NavBar from "./NavBar"
 
-import Header from "./header"
+import Header from "./Header"
 import "./layout.css"
 
 const Layout = ({ children, fullWidth  = false}) => {

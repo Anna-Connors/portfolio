@@ -1,0 +1,25 @@
+.accordion-header {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem auto;
+}
+
+.accordion-header:hover {
+    background-color: #2a2a2a;
+}
+
+.accordion-content {
+    padding: 1rem 0;
+}
+
+.icon-open, .icon-closed {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.accordion-item {
+    margin-bottom: .5rem;
+    overflow: hidden;
+}
